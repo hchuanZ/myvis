@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>ZhcVIS</title>
+		<script type="text/javascript" src="js/d3.v3.js"></script>
+		<script type="text/javascript" src="js/tiaoxing.js"></script>	
+		<script type="text/javascript" src="js/pie.js"></script>
+		<script type="text/javascript" src="js/showEveryNode.js"></script>
+			
+		
+		<style type="text/css">
+			#goe_svg{
+				background: black;
+			}
+			#mian-col{
+				/*background: #777777;*/
+				/*width: 100%;
+				height: 100%;*/
+				float: left;
+			}
+			#main_body{
+				background: #777777;
+			}
+			 .axis path, .axis line{
+            fill: none;
+            stroke: black;
+            shape-rendering: crispEdges;
+        	}
+        	 .axis text{
+            font-family: sans-serif;
+            font-size: 0px;
+        	}
+        	 .toolTip {
+				  pointer-events: none;
+				  position: absolute;
+				    display: none;
+				  min-width: 50px;
+				  height: auto;
+				  background: none repeat scroll 0 0 #ffffff;
+				  padding: 9px 14px 6px 14px;
+				  border-radius: 2px;
+				  text-align: center;
+				  line-height: 1.3;
+				  color: #5B6770;
+				  box-shadow: 0px 3px 9px rgba(0, 0, 0, .15);
+				}
+				.toolTip:after {
+				  content: "";
+				  width: 0;
+				  height: 0;
+				  border-left: 12px solid transparent;
+				  border-right: 12px solid transparent;
+				  border-top: 12px solid white;
+				  position: absolute;
+				  bottom: -10px;
+				  left: 50%;
+				  margin-left: -12px;
+				}  
+				.toolTip span {
+				  font-weight: 500;
+				  color: #081F2C;
+				}
+
+		</style>
+	</head>
+	<body  id= "main_body" style="padding: 0; margin: 0;width: 100%;height: 100%;">
+	<div id="mian-col" style="padding: 0; margin: 0;">
+		<svg id="svg" style="padding: 0; margin: 0;"></svg>
+		
+	</div>
+	
+	<div id="tiaoxingchart" style="float: left;">
+		
+	</div>
+	<table>
+		<tr>
+			<td>
+				<div id="piechart"></div>
+			</td>
+			<td >
+				<div style="text-align: left;">
+					<h3 >分析</h3>
+				</div>
+				<div>
+					<p id="p1">水中有机物进行生物氧化分解时需消耗溶解氧。如果有机物较多，耗氧速度超过从空气中补充的溶氧速度，则水中的溶解氧含量将减少,受到有机物污染严重时，水的溶解氧甚至可接近于零。</p>
+				</div>
+				<div>
+					<p id="p2">水中的氨氮可以在一定条件下转化成亚硝酸盐,它将和蛋白质结合形成亚硝胺，这是一种强致癌物质，对人体健康极为不利。</p>
+					<p id = "p3">
+						氨氮对水生物起危害作用的主要是游离氨，其毒性比铵盐大几十倍，并随碱性的增强而增大。
+					</p>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<div id="zhexianchart"></div>
+	<!--<div id="sandian">
+		<svg id="san_dian" style="padding: 0; margin: 0;"></svg>
+	</div>-->
+	</body>
+	<script type="text/javascript" src="js/main.js"></script>
+</html>
