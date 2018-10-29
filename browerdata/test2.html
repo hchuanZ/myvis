@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+<html lang="en">
+	<meta charset="UTF-8">
+	<title>WordsCloud</title>
+  <link href="css/css.css" rel="stylesheet" type="text/css"/>
+    <script src="js/d3.js"></script>
+  <!--<script src="js/d3.layout.cloud.js"></script>-->
+  <!--<script src="js/WordsCloud.js"></script>-->
+  <script src="js/calender.js"></script>
+  <script src="js/daytime.js"></script>
+    <script src=js/jquery-3.2.1.min.js></script>
+    <script src=js/bootstrap.min.js></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <script src="js/GetType.js"></script>
+
+    <script src="js/echarts.simple.js"></script>
+    <script src="js/echarts-wordcloud.min.js"></script>
+    <script src="js/cloud.js"></script>
+    <script src="js/test2.js"></script>
+</head>
+
+<style type="text/css">
+
+    .col-md-12{
+        border:1px solid #cee3e9;background:#f1f7f9
+    }
+    p{
+        font-size: 16px;
+    }
+    #wordcloud{
+        width: 778px;
+        height: 350px;
+    }
+</style>
+
+<body>
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h1 class="text-center">
+                Report
+            </h1>
+            <div class="row clearfix">
+
+                <div class="col-md-8 column">
+                    <div class="row clearfix">
+                        <div class="col-md-12 column" id="wordcloud">
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-12 column" id="daytime">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 column">
+
+                    <div class="col-md-12 column" id="report">
+
+                        <h3 class="text-center">
+                            兴趣爱好
+                        </h3>
+                        <p id = "Wreport"></p>
+                        <br>
+                        <h3 class="text-center">
+                            生活作息
+                        </h3>
+                        <p id = "Treport"></p>
+                        <br>
+                        <h3 class="text-center">
+                            熬夜情况
+                        </h3>
+                        <p id = "Creport"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column" id="Staynight">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    	<!--<div id="wordcloud" ></div>-->
+        <!--<div id="Staynight" ></div>-->
+        <!--<div id="daytime"></div>-->
+
+
+
+	
+
+
+</body>
+</html>

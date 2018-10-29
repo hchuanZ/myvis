@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+    <script src="js/d3.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/3.7.0/echarts.simple.js"></script>
+    <script src="js/echarts-wordcloud.min.js"></script>
+	</head>
+	<style>
+		#wordcloud{
+			width: 900px;
+			height: 900px;
+		}
+	</style>
+	<script>
+	
+	
+	 d3.csv("data.csv",function(error,data){
+	 	var dataset = data;
+	 	console.log(dataset);
+	 	cloud(dataset);
+	 });
+	
+	function cloud(dataset) {
+	    console.log(dataset);
+	    var chart = echarts.init(document.getElementById('wordcloud'));
+	
+	    var newdata = new Array();
+	    for(var i=0;i<dataset.length;i++){
+	        newdata[i] = new Object();
+	        newdata[i].name = dataset[i].name;
+	        newdata[i].value = 0.001;
+	    }
+	
+	
+	    var option = {
+	        tooltip: {},
+	        series: [ {
+	            type: 'wordCloud',
+	            gridSize: 1,
+	            sizeRange: [0, 45],
+	            rotationRange: [0, 90],
+	            rotationStep: 90,
+	            shape: 'pentagon',
+	            width: 800,
+	            height: 800,
+	            drawOutOfBound: false,
+	            textStyle: {
+	                normal: {
+	                    color: function () {
+	                        return 'rgb(' + [
+	                            Math.round(Math.random() * 160),
+	                            Math.round(Math.random() * 160),
+	                            Math.round(Math.random() * 160)
+	                        ].join(',') + ')';
+	                    }
+	                },
+	                emphasis: {
+	                    shadowBlur: 10,
+	                    shadowColor: '#333'
+	                }
+	            },
+	            data:[]
+	        } ]
+	    };
+	    option.series[0].data = newdata;
+	
+	    console.log(option.series[0].data);
+	
+	    chart.setOption(option);
+		
+	    window.onresize = chart.resize;
+	}
+	</script>
+	
+	<body>
+		<div id = 'wordcloud'></div>
+	</body>
+</html>

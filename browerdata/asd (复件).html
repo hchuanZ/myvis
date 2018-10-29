@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	  <script src=js/d3.js></script>
+	<script type="text/javascript">
+		  	
+		  	var x=[];
+		 d3.json("history.json",function(error,data){
+
+		 	console.log(data);
+		 	x=data.slice(0,data.length);
+		 });
+
+		 setTimeout(function(){console.log(x);}, 3000 );
+
+	</script>
+</body>
+</html>

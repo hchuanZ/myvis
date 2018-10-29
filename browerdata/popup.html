@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>VIS</title>
+		<script type="text/javascript" src="typedUrls.js"></script>
+		<script src=js/d3.js></script>
+	
+	
+  <script src=js/pie.js></script>
+  <script src=js/tiaoxingtu.js></script>
+  <script src=js/tiaoxingtu2.js></script>
+  <script src=js/tiaoxingtu3.js></script>
+  <script src=js/GetType.js></script>
+  <script src=js/RadarChart.js></script>
+  <script src=js/Sunburst.js></script>
+  <script src=main.js></script>
+		<style type="text/css">
+			#mian-col{
+				background: #FFF;
+			}
+			.container{
+				width: 1024px;
+			}
+			#body{
+				/*position: relative;*/
+			}
+			 .toolTip {
+				  pointer-events: none;
+				  position: absolute;
+				    display: none;
+				  min-width: 50px;
+				  height: auto;
+				  background: none repeat scroll 0 0 #ffffff;
+				  padding: 9px 14px 6px 14px;
+				  border-radius: 2px;
+				  text-align: center;
+				  line-height: 1.3;
+				  color: #5B6770;
+				  box-shadow: 0px 3px 9px rgba(0, 0, 0, .15);
+				}
+				.toolTip:after {
+				  content: "";
+				  width: 0;
+				  height: 0;
+				  border-left: 12px solid transparent;
+				  border-right: 12px solid transparent;
+				  border-top: 12px solid white;
+				  position: absolute;
+				  bottom: -10px;
+				  left: 50%;
+				  margin-left: -12px;
+				}  
+				.toolTip span {
+				  font-weight: 500;
+				  color: #081F2C;
+				}
+				#svg-filter {
+					           
+					            /*background: #ddefef;*/
+					        }
+					    .ticks {
+					      font: 8px sans-serif;
+					    }
+					    
+					    .track,
+					    .track-inset,
+					    .track-overlay {
+					      stroke-linecap: round;
+					    }
+					    
+					    .track 0
+					      stroke: #000;
+					      stroke-opacity: 0.3;
+					      stroke-width: 10px;
+					    }
+					    
+					    .track-inset {
+					      stroke: #ddd;
+					      stroke-width: 8px;
+					    }
+					    .track-overlay {
+					      pointer-events: stroke;
+					      stroke-width: 50px;
+					      stroke: transparent;
+					      cursor: crosshair;
+					    }
+
+					    .handle {
+					      fill: #fff;
+					      stroke: #000;
+					      stroke-opacity: 0.5;
+					      stroke-width: 1.25px; 
+					    }   
+					    .slider{
+					      background: #ddefef;
+					    }
+					    .area {
+					  fill: steelblue;
+					  clip-path: url(#clip); 
+					}
+		</style>
+		
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	</head>
+	<body id="body">
+		
+			<p id="Headline" style="font-size: 20px">History Visualization For Chrome</p>
+			
+				
+					
+				
+				<div  id="mian-col">
+					<table>
+						<tr>
+							<td>
+								<div id="mainsvg">      		
+								    <svg id="Piesvg"></svg>  
+								</div>
+							</td>
+								    
+							<td>
+								<div>
+									<div id="my_tiaoxingtu">
+										<svg id="zzzchart" height= " 175" width="320"></svg>
+									</div>
+									<div >
+										<div
+											 id="RadarChart"></div>
+									</div>
+									
+								</div>
+							</td>
+						</tr>
+						
+								
+								
+								
+							
+						
+					</table>
+					<svg id="svg-filter" width="700" height="88"></svg>
+				</div>
+				
+					
+				
+				
+			
+			
+		</div>
+		
+	</body>
+	
+  
+
+
+  	
+  </script>
+</html>
