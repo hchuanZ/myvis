@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>test</title>
+		<script src='https://unpkg.com/vue/dist/vue.min.js' ></script>
+		<script type="text/javascript" src="js/d3.v3.js"></script>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js">
+			
+		</script>
+		<style type="text/css">
+			.color{
+				color: red;
+			}
+			.font_size{
+				font-size:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div id="app">
+			<input type="text" placeholder="input name" v-model="name" />
+			<h3>Hello {{ name }} !</h3>
+			<h2>{{ dates }}</h2>
+			<a v-bind:href="href">跳转</a>
+			<p v-if="show">点击下面即可隐藏我哦~</p>
+			<button v-on:click="hidden">点击{{shows}}</button>
+			<p :class="{'color':iscolor}">hello</p>
+			
+			<input type="checkbox" v-model="check_box" 
+				id="input_checkbox" 
+				v-bind:true-value="value1"
+				v-bind:false-value="value2" />
+			<label >复选框</label>
+			<p>{{check_box}}</p>
+			<p>{{value1}}</p>
+			<p>{{value2}}</p>
+			
+			<input type="number" v-model.number="num" />
+			<p>{{num}}</p>
+		</div>
+		
+		
+		<div id="app2">
+			<p :class="classes">
+				hello
+			</p>
+			<ul v-for="book in changebook">
+				<li>{{book.name}}</li>
+				<li>{{book.author}}</li>
+			</ul>
+			<select v-model="selected" >
+				<option value="1">hahah</option>
+				<option value="2">ohoho</option>
+				<option value="3">heheh</option>
+			</select>
+			<br />
+			<p>选中的是：{{selected}}</p>
+		</div>-->
+		<div id="app">
+			小球数量:<input type="text" name="n" id="n" value="n" v-model="n" />
+			<br />
+			数轴长度:<input type="text" name="l" id="l" value="l" v-model="l" />
+			<br />
+			所花时间:<input type="text" name="t" id="t" value="t" v-model="t" />
+			<br />
+			<div  v-for="(item,num) in getN">
+				第{{getNumOfBall(num)}}个小球的位置：<input type="text" name="" class="every_sq" value="" />
+			</div>
+		
+		    <input type="button" name="" id="" value="提交" v-on:click="submits"/>
+		</div>
+		
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				
+				let app = new Vue({
+				el:"#app",
+				data:{
+					n:0,
+					l:0,
+					t:0,
+					every:[],
+					ball:[]
+				},
+				methods:{
+					
+					submits:function(){
+						//console.log(this);
+						//console.log(window);
+						
+						var loc = $(".every_sq").map(function(){return $(this).val()}).get();
+						
+						var locs = [];
+						for(let i = 0;i<loc.length;i++){
+							locs.push(parseInt(loc[i]));
+							this.ball[i] = {
+								speed:1,
+								Direction:1,
+								loac:parseInt(loc[i])
+							}
+						}
+						
+						console.log(locs);
+						console.log(this.ball);
+						var len = parseInt(this.l);
+						var time = parseInt(this.t);
+						for(let i = 0 ; i < time ; i++){
+							//每一秒
+							for(let j = 0;j<loc.length;j++){
+								//每颗球
+								for(let k = j+1;k<loc.length;k++){
+									//判断是否与其他球相撞
+									if(j!==k){
+										//不是本球
+										if(this.ball[j].loac===this.ball[k].loac){
+											this.ball[j].Direction *= -1;
+											this.ball[k].Direction *= -1;
+										}
+									}
+									
+								}
+								if(this.ball[j].loac === len ||this.ball[j].loac === 0){
+									this.ball[j].Direction *= -1;
+								}
+								
+								this.ball[j].loac += (this.ball[j].speed*this.ball[j].Direction)
+								
+							}
+							
+							
+						}
+						console.log(this.ball);
+						var data = [];
+						for(var i = 0;i<this.ball.length;i++){
+							data.push(parseInt(this.ball[i].loac))
+						}
+						console.log(data);
+						d3.selectAll("p").remove();
+						d3.select("#app").selectAll("p")
+						.data(data).enter()
+						.append("p")
+						.text(function(d){
+							return d;
+						})
+							
+						
+					},
+					getNumOfBall:function(num){
+						return num+1
+					}
+				},
+				computed:{
+					
+					getN:function(){
+						return parseInt(this.n);
+					}
+					
+				}
+			})
+//				let app = new Vue({
+//					el:'#app',
+//					data:{
+//						name:'',
+//						dates: new Date(),
+//						timer:null,
+//						show:true,
+//						iscolor:true,
+//						shows:"隐藏",
+//						href:"http://www.baidu.com",
+//						check_box:false,
+//						value1:'a',
+//						value2:'b',
+//						num:123
+//					},
+//					methods:{
+//						hidden:function(){
+//							this.show = !this.show;
+//							if(this.shows==="隐藏")
+//								this.shows = '展示';
+//							else
+//								this.shows = '隐藏';
+//						}
+//					},
+//					mounted:function(){
+//						let _this = this;
+//						this.timer = setInterval(function(){
+//							_this.dates = new Date();
+//						},1000)
+//					},
+//					beforeDestroy:function(){
+//						if(this.timer){
+//							clearInterval(this.timer);
+//						}
+//					}
+//				});
+//				
+//			let app2 = new Vue({
+//				el:'#app2',
+//				data:{
+//					books:[
+//					{name:"HELLO JS",author:"zhang"},
+//					{name:"HI JS",author:"zhdsag"},
+//					{name:"HELLO JaS",author:"good"}
+//					],
+//					selected:null
+//				},
+//				computed:{
+//					classes:function(){
+//						return {
+//							color:app.iscolor,
+//							font_size:app.iscolor
+//						}
+//					},
+//					changebook:function(){
+//						return this.books.filter(function(x){
+//							return x.name.match(/JS/)
+//						})
+//					}
+//				}
+//				
+//				
+//			})
+//			console.log(app.$data)	
+
+
+
+			
+			}
+		</script>
+	</body>
+</html>

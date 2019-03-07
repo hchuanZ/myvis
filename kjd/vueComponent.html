@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vueComponent</title>
+		<script src='https://unpkg.com/vue/dist/vue.min.js' ></script>
+		
+	</head>
+	<body>
+		<div id="app">
+			<my-component message='来自父组件的数据'></my-component>
+			<my-component></my-component>
+			<my-component></my-component>
+			<br />
+			<br />
+			<input type="text" id="input" v-model="messages"/>
+			<new-component :newmessage='messages'></new-component>
+		</div>
+		<script type="text/javascript">
+//			var data = {
+//				counter:0
+//			};
+			Vue.component('my-component',{
+				props:['message'],
+				template:'<button @click="counter++">点击次数{{counter}}，{{message}}</button>',
+				data:function(){
+//					return data;
+					return{
+						counter:0
+					}
+				}
+			});
+			Vue.component('new-component',{
+				props:['newmessage'],
+				template:'<p>{{newmessage}}</p>'
+				
+			})
+			var app = new Vue({
+				el:"#app",
+				data:{
+					messages:''
+				}
+			})
+		</script>
+
+	</body>
+</html>
